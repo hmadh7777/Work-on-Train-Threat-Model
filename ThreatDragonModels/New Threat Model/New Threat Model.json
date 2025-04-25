@@ -35,13 +35,14 @@
                 "text": "Employee Device"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -125,16 +126,46 @@
               ]
             },
             "id": "731a9147-473f-49dc-989a-a28e15fa01da",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "Employee Device",
               "description": "Dit kan een laptop of een gsm of een andere toestel. ",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "f3c21632-3133-4eb6-a0ac-c1c6f128917a",
+                  "title": "Unencrypted Data Exposure",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Sensitive documents intercepted over public WiFi.",
+                  "mitigation": "Enforce HTTPS and VPN usage.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": "6"
+                },
+                {
+                  "id": "a241c816-26c2-423b-8362-b0a39acbc83a",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "2"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 1
+              }
             }
           },
           {
@@ -151,13 +182,14 @@
                 "text": "Router"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -241,26 +273,92 @@
               ]
             },
             "id": "da8bf59c-41e3-4d4b-9048-f4ded234ebd7",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "Router",
               "description": "Dit is een router binnen de organisatie.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
+              "threats": [
+                {
+                  "id": "c9c75029-b7cf-4b38-ad34-fda9fb8026af",
+                  "title": "Document Alteration in Transit",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Attacker modifies shared Excel/Word files while they’re transmitted over unsecured WiFi.",
+                  "mitigation": "Use SharePoint/OneDrive with version history + end-to-end encryption.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "10"
+                },
+                {
+                  "id": "365f88e8-24c9-464e-b1a5-246cb8c2d846",
+                  "title": "Call Eavesdropping (VoIP Hijacking)",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Attackers intercept unencrypted VoIP calls (e.g., Teams/Zoom).",
+                  "mitigation": "Mandate encrypted call software + VPN.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                },
+                {
+                  "id": "a29c1f27-702f-4644-af70-d4e6f69f6c0c",
+                  "title": "Unencrypted Data on WiFi",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": " Sensitive emails/documents intercepted over public WiFi.",
+                  "mitigation": "Enforce HTTPS-only browsing + corporate VPN.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                },
+                {
+                  "id": "4a76b7db-759b-4a01-a28b-77e494ad4cea",
+                  "title": "WiFi Overload",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Train WiFi becomes unusable due to attacker traffic flooding.",
+                  "mitigation": "Provide LTE hotspots as backup.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                },
+                {
+                  "id": "ca42d6da-450d-4134-a0c3-eab489bd5f86",
+                  "title": "Device Battery Drain",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Employee can’t work due to dead battery mid-commute.",
+                  "mitigation": "Portable chargers + low-power mode training.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": ""
+                }
               ],
-              "name": null
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 2,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -277,13 +375,14 @@
                 "text": "VPN"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -367,19 +466,40 @@
               ]
             },
             "id": "8011e99e-8fc9-40b0-a244-541a5f36d1bc",
-            "zIndex": 3,
             "data": {
               "type": "tm.Process",
               "name": "VPN",
               "description": "Virtual Private Network voor het veilgheid van de interne network.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "2ab5c04d-e086-4bf1-a44d-94f6d2489089",
+                  "title": "Compromised VPN Credentials",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Elevation of privilege",
+                  "description": "Stolen VPN credentials grant access to internal networks.",
+                  "mitigation": "MFA + automatic session timeouts.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": "5"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -396,13 +516,14 @@
                 "text": "MS Office 365"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -486,19 +607,66 @@
               ]
             },
             "id": "e9787275-7661-42de-94dc-857c7ed17311",
-            "zIndex": 4,
             "data": {
               "type": "tm.Process",
               "name": "MS Office 365",
               "description": "Dit is een beheer platform voor keliene of grote organisatie.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "f67368e1-9481-4d04-912f-f16169dee36b",
+                  "title": "Shared Account Misuse",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Employee denies editing a document because they do not have right to it",
+                  "mitigation": "Enforce individual logins + enable audit trails , set the e,ployees in the right group",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": "10"
+                },
+                {
+                  "id": "6f16fde7-ab4e-41fe-a599-eb96530d660e",
+                  "title": "Deleted Call Logs",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Employee deletes call history to hide unauthorized communications",
+                  "mitigation": "Centralized logging with retention policies.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                },
+                {
+                  "id": "4d323e9e-da9b-40f7-be94-90192601f664",
+                  "title": " Malware on Device",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Attacker installs malware via fake software updates on public WiFi.",
+                  "mitigation": "Restrict admin rights + use endpoint protection.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": "9"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -522,6 +690,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 5,
             "ports": {
               "groups": {
                 "top": {
@@ -605,7 +774,6 @@
               ]
             },
             "id": "9ecc2385-58ef-4ee1-978c-ec05ba2fa5c0",
-            "zIndex": 5,
             "data": {
               "type": "tm.Process",
               "name": "Teams/Zoom",
@@ -843,7 +1011,16 @@
               "cell": "da8bf59c-41e3-4d4b-9048-f4ded234ebd7",
               "port": "4caeaa96-5eae-4f24-bede-a806a7b5d391"
             },
-            "vertices": []
+            "vertices": [
+              {
+                "x": 300,
+                "y": -240
+              },
+              {
+                "x": 350,
+                "y": -190
+              }
+            ]
           },
           {
             "position": {
@@ -859,13 +1036,14 @@
                 "text": "Attacker"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 11,
             "ports": {
               "groups": {
                 "top": {
@@ -949,16 +1127,46 @@
               ]
             },
             "id": "3a207271-d21e-4547-92fb-4765936f4ab5",
-            "zIndex": 11,
             "data": {
               "type": "tm.Actor",
               "name": "Attacker",
               "description": "Een hacker die probeert het systeem te hacken ,en data te stealen.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "bd0a83e4-c44e-461d-9d0e-023286d3ce76",
+                  "title": "Fake Arp responed (Arp poising)",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Attacker impersonates arp request to steal credentials.",
+                  "mitigation": "Mandate VPN use + employee trainin, dhcp beperking",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": "10"
+                },
+                {
+                  "id": "c3f4f510-cd92-4589-ac1e-7dfeccbff534",
+                  "title": " Phishing MS Office Login Page",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Fake Office 365 login page sent via email to harvest credentials.",
+                  "mitigation": "Enforce MFA + use email filtering tools.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "3"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 1
+              }
             }
           }
         ],
